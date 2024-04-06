@@ -1,0 +1,370 @@
+/* CSS reset
+    http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+button{
+	background-color: transparent;
+	border: 0px;
+}
+
+/* Code Starts HERE Code Starts HERE Code Starts HERE */
+/* Code Starts HERE Code Starts HERE Code Starts HERE */
+/* Code Starts HERE Code Starts HERE Code Starts HERE */
+
+
+/* Requirement 1: 1200px < screen width <= 1920px */
+
+/* ==== Top segment: Navbar ====== */
+.header{
+	display: flex;
+	align-items: center;
+	height: 40px;
+}
+.header p{
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+}
+/* text:myweb */
+.myweb{
+	width:50%;
+}
+.myweb p{
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+	margin:10px;
+}
+/* menu item */
+.web-menu{
+	width:50%;
+	display: flex;
+	justify-content: flex-end;
+}
+.item{
+	margin:10px;
+	font-family: 'Times New Roman', Times, serif;
+}
+.mobile-menu{
+	display: none;
+}
+
+
+/* ========== Middle Segment: Welcome text ========== */
+.topic{
+	height:250px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #DDEEF8;
+	margin-bottom: 40px;
+}
+.text h2{
+	font-size: 40px;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+/* =========== Bottom Segment: Main Content ======== */
+/* composition */
+.content{
+	width: 1200px;
+	/* background-color: aquamarine; */
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 50px 150px 150px;   
+	grid-gap: 20px 20px;
+}
+.content div{
+	/* background-color:beige; */
+	display: flex;
+	align-items: center;
+}
+.content p{
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+	margin-left: auto;
+	margin-right:auto;
+}
+
+/* -----Small Box ----*/
+
+.img{
+	width: 80px;
+	height:50px;
+}
+.promotion{
+	margin:10px;
+}
+.box1{
+	background-color: #DDEEF8;
+}
+.box2 {
+	grid-column-start: 2;
+	grid-column-end: 4;
+	background-color: #DDEEF8;
+}
+.box3 {
+	grid-column-start: 4;
+	grid-column-end: 6;
+	background-color: #DDEEF8;
+}
+
+/* -----Big Box -------*/
+.title{
+	width: 100%;
+	height:40px;
+	position:absolute;
+	bottom: 0px;
+	background-color: #CBF4C8;
+	opacity: 0.7;
+}
+.title p{
+	text-align: center;
+
+}
+.star{
+	position:absolute;
+	right:8px;
+	top:8px;
+}
+.box4 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box5 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box6 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box7 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box8 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box9 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box10 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box11 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box12 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.box13 {
+	position: relative;
+	background-image: url(img/cat.jpg);
+	background-size: cover;
+    background-position:center;
+}
+
+
+
+
+
+/* Requirement 2: 600px < screen width <= 1200px */
+@media(max-width:1200px){
+	/* composition */
+	.content{
+		width: 90%;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 50px 50px 150px 150px 150px;   
+		grid-gap: 20px 20px;
+	}
+	.box1{
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+	.box2{
+		grid-column-start: 3;
+		grid-column-end: 5;
+	}
+	.box3{
+		grid-column-start: 1;
+		grid-column-end: 5;
+	}
+	.box12{
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+	.box13{
+		grid-column-start: 3;
+		grid-column-end: 5;
+	}
+
+}
+
+/* Requirement 3: 360px < screen width <= 600px */
+@media(max-width:600px){
+	/* item list */
+	.item{
+		display: none;
+	}
+	.mobile-menu{
+		display: block;
+	}
+	.hamburger{
+		margin:10px;
+	}
+	
+	.pop-up{
+		position: relative;	
+		top: 0px;
+		right:0px;
+		display:none;
+		z-index: 1;
+	}
+	.pop-list{
+		position:fixed;
+		background-color: white;
+		top:0px;
+		right:0px;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		height:100%;
+		align-items: center;
+		padding-top: 20px;
+	}
+	.list-item{
+		margin-bottom:40px ;
+		font-size: 20px;
+		font-family: 'Times New Roman', Times, serif;
+
+	}
+
+	.exit{
+		position:fixed;
+		right:10px;
+		top:10px;
+		z-index: 3;
+	}
+	
+
+	
+	/* composition */
+	.content{
+		width: 90%;
+		grid-template-columns: 1fr ;
+		grid-template-rows: repeat(3,50px) repeat(10,150px) ; 
+		grid-gap: 20px 0px;  
+	}
+	.box1{
+		grid-column-start: 1;
+	}
+	.box2{
+		grid-column-start: 1;
+	}
+	.box3{
+		grid-column-start: 1;
+	}
+	.box4{
+		grid-column-start: 1;
+	}
+	.box5{
+		grid-column-start: 1;
+	}
+	.box6{
+		grid-column-start: 1;
+	}
+	.box7{
+		grid-column-start: 1;
+	}
+	.box8{
+		grid-column-start: 1;
+	}
+	.box9{
+		grid-column-start: 1;
+	}
+	.box10{
+		grid-column-start: 1;
+	}
+	.box11{
+		grid-column-start: 1;
+	}
+	.box12{
+		grid-column-start: 1;
+	}
+	.box13{
+		grid-column-start: 1;
+	}
+
+}

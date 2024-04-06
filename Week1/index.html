@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week1</title>
+    <link rel="icon" href="img/logo.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Top segment: Navbar -->
+    <div class="header">
+        <div class="myweb">
+            <p>My Webpage</p>
+        </div>
+        <div class="web-menu">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+        </div>
+        <!-- 漢堡圖 -->
+        <div class="mobile-menu">
+            <div id="ham" class="hamburger">
+                <button onclick="pop()"><img src="img/hamburger.png"></button>
+            </div>
+            <div id="pop" class="pop-up">
+                <div class="pop-list">
+                    <div class="list-item">Item 1</div>
+                    <div class="list-item">Item 2</div>
+                    <div class="list-item">Item 3</div>
+                    <div class="list-item">Item 4</div>
+                </div>
+                <div class="exit">
+                    <button onclick="closePop()">X</button>
+                </div>
+            
+            </div>
+            <script>
+                function pop(){
+                    let divHam = document.querySelector("#ham");
+                    let divPop = document.querySelector("#pop");
+                    divHam.style.display="none";
+                    divPop.style.display="block";
+                }
+                function closePop(){
+                    let divHam = document.querySelector("#ham");
+                    let divPop = document.querySelector("#pop");
+                    divHam.style.display="block";
+                    divPop.style.display="none";
+                }
+
+            </script>
+            
+           
+           
+
+
+        </div>
+    </div>
+
+    <!-- Middle Segment: Welcome text -->
+    <div class="topic">
+        <div class="text">
+            <h2>Welcome to MyHome</h2>
+        </div>
+    </div>
+    
+    <!-- Bottom Segment: Main Content -->
+    <div class="content">
+        <div class="box1">
+            <div class="img">
+                <img src="img/cat2.jpg" alt="貓咪">
+            </div>
+            <div class="promotion">
+                <p>Promotion 1</p>
+            </div>
+        </div>
+        <div class="box2">
+            <div class="img">
+                <img src="img/cat2.jpg" alt="貓咪">
+            </div>
+            <div class="promotion">
+                <p>Promotion 2</p>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="img">
+                <img src="img/cat2.jpg" alt="貓咪">
+            </div>
+            <div class="promotion">
+                <p>Promotion 3</p>
+            </div>
+        </div>
+        <div class="box4">
+           <div class="title">
+                <p>Title 1</p>
+           </div>
+           <div class="star">
+                <img src="img/star.png">
+           </div>
+        </div>
+        <div class="box5">
+            <div class="title">
+                 <p>Title 2</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box6">
+            <div class="title">
+                 <p>Title 3</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box7">
+            <div class="title">
+                 <p>Title 4</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box8">
+            <div class="title">
+                 <p>Title 5</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box9">
+            <div class="title">
+                 <p>Title 6</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box10">
+            <div class="title">
+                 <p>Title 7</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box11">
+            <div class="title">
+                 <p>Title 8</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box12">
+            <div class="title">
+                 <p>Title 9</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+         <div class="box13">
+            <div class="title">
+                 <p>Title 10</p>
+            </div>
+            <div class="star">
+                 <img src="img/star.png">
+            </div>
+         </div>
+
+        
+    </div>
+
+
+
+
+</body>
+</html>
