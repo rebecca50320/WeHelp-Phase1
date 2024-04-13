@@ -1,9 +1,4 @@
-#dict新增consultants班表
-schedule = [
-    {"name":"John","booked" : []},
-    {"name":"Bob","booked" : []},
-    {"name":"Jenny","booked" : []},
-]
+schedule = []
 
 #紀錄已預約時間  
 def record_booking(name,booking_time):
@@ -12,6 +7,13 @@ def record_booking(name,booking_time):
                 item["booked"].extend(i for i in booking_time)
                 
 def book(consultants, hour, duration, criteria):
+    #生成consultants班表
+    if len(schedule) >0:
+        pass
+    else:
+        for i in range(len(consultants)):
+            schedule.append({"name":consultants[i]["name"],"booked":[]})
+
     #計算想預約的時間
     booking_time = [hour]
     for i in range(duration-1):
@@ -51,6 +53,7 @@ consultants=[
 {"name":"Bob", "rate":3, "price":1200}, 
 {"name":"Jenny", "rate":3.8, "price":800}
 ]
+
 
 book(consultants, 15, 1, "price") # Jenny 
 book(consultants, 11, 2, "price") # Jenny 

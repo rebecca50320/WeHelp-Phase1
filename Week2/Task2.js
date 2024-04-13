@@ -1,9 +1,4 @@
-//dict新增consultants班表
-let schedule = [
-    {"name":"John", "booked":[]},
-    {"name":"Bob", "booked":[]},
-    {"name":"Jenny", "booked":[]}
-]
+let schedule = [];
 
 //紀錄已預約時間
 function recordBooking(name,bookingTime){
@@ -15,6 +10,14 @@ function recordBooking(name,bookingTime){
 }
 
 function book(consultants, hour, duration, criteria){
+    //生成顧問班表
+    if (schedule.length >0){
+        //以生成則不用        
+    }else{
+        for (let i=0; i<consultants.length; i++){
+            schedule.push({"name":consultants[i]["name"],"booked":[]});
+        }
+    }
     //計算想預約的時間
     const bookingTime = [hour];
     for (let i=0; i<(duration-1); i++){
