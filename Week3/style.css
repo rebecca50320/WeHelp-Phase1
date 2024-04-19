@@ -1,0 +1,306 @@
+/* CSS reset
+    http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+button{
+	background-color: transparent;
+	border: 0px;
+}
+
+/* Code Starts HERE Code Starts HERE Code Starts HERE */
+/* Code Starts HERE Code Starts HERE Code Starts HERE */
+/* Code Starts HERE Code Starts HERE Code Starts HERE */
+
+
+/* Requirement 1: 1200px < screen width <= 1920px */
+
+/* ==== Top segment: Navbar ====== */
+.header{
+	display: flex;
+	align-items: center;
+	height: 40px;
+}
+.header p{
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+}
+/* text:myweb */
+.myweb{
+	width:50%;
+}
+.myweb p{
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+	margin:10px;
+}
+/* menu item */
+.web-menu{
+	width:50%;
+	display: flex;
+	justify-content: flex-end;
+}
+.item{
+	margin:10px;
+	font-family: 'Times New Roman', Times, serif;
+}
+.mobile-menu{
+	display: none;
+}
+
+
+/* ========== Middle Segment: Welcome text ========== */
+.topic{
+	height:250px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #DDEEF8;
+	margin-bottom: 40px;
+}
+.text h2{
+	font-size: 40px;
+	font-family: 'Times New Roman', Times, serif;
+}
+
+/* =========== Bottom Segment: Main Content ======== */
+/* -----Small Box ----*/
+.content_small{
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	/* grid-template-columns: 2fr 2fr 2fr; */
+	/* grid-template-columns: calc((100% - 40px) / 3) repeat(2,1fr);
+	grid-template-rows: 50px;   
+	grid-gap: 20px;	 */
+}
+/* .content_small div{
+	display: flex;
+	align-items: center;
+} */
+.content_small p{
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+	padding-left:10px;
+}
+
+.box{
+	background-color: #DDEEF8;
+	width: calc((100% - 40px) / 3);
+	display: flex;
+	align-items: center;
+}
+
+.box img{
+	width: 80px;
+	height:50px;
+}
+/* -----Big Box ----*/
+.content_big{
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	display: grid;
+	justify-content: center;
+	/* grid-template-columns: 2fr 1fr 1fr 1fr 1fr; */
+	grid-template-columns: calc((100% - 40px)/3) repeat(4,calc((100% - 100px) / 6));
+	grid-template-rows: 150px 150px;   
+	grid-gap: 20px;	
+}
+
+.content_big p{
+	font-size: 20px;
+	font-family: 'Times New Roman', Times, serif;
+	margin-left: auto;
+	margin-right:auto;
+}
+.bbox{
+	/* 
+	background-size: cover;
+    background-position: center; */
+	/* text-align: center; */
+	display: flex;
+    justify-content: center;
+    align-items: flex-end;
+	position: relative;
+}
+.title{
+	background-color: #CBF4C8;
+	width: 100%;
+	height:40px;
+    display: flex;
+	align-items:center;
+    justify-content: center;
+	opacity: 0.7;
+	position:absolute;
+}
+.star{
+	position: absolute;
+	right:8px;
+	top:8px;
+}
+.bbox img{
+	height: 100%;
+	width: 100%;
+}
+
+/* Requirement 2: 600px < screen width <= 1200px */
+@media(max-width:1200px){
+	/* small box */
+	.content_small{
+		width: 90%;
+		flex-wrap: wrap;
+	}
+	.box{
+		width: calc((100% - 20px) / 2);
+	}
+	.box3{
+		width: 100%;
+		margin-top: 20px;
+	}
+	/* big box */
+	.content_big{
+		width: 90%;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 150px 150px 150px; 
+	}
+	.bbox9{
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+	.bbox10{
+		grid-column-start: 3;
+		grid-column-end: 5;
+	}
+}	
+
+/* Requirement 3: 360px < screen width <= 600px */
+@media(max-width:600px){
+	/* item list */
+	.item{
+		display: none;
+	}
+	.mobile-menu{
+		display: block;
+	}
+	.hamburger{
+		margin:10px;
+	}
+	
+	.pop-up{
+		position: relative;	
+		top: 0px;
+		right:0px;
+		display:none;
+		z-index: 1;
+	}
+	.pop-list{
+		position:fixed;
+		background-color: white;
+		top:0px;
+		right:0px;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		height:100%;
+		align-items: center;
+		padding-top: 20px;
+	}
+	.list-item{
+		margin-bottom:40px ;
+		font-size: 20px;
+		font-family: 'Times New Roman', Times, serif;
+
+	}
+	.exit{
+		position:fixed;
+		right:10px;
+		top:10px;
+		z-index: 3;
+	}
+	/* composition */
+	.content_small{
+		width: 90%;
+		flex-wrap: wrap;
+	}
+	.box{
+		width: 100%;
+		margin-top: 20px;
+	}
+	/* big box */
+	.content_big{
+		width: 90%;
+		grid-template-columns: 1fr ;
+		grid-template-rows: repeat(10,150px) ; 
+		grid-gap: 20px; 
+	}
+	.bbox{
+		width: 100%;
+		grid-column-start: 1;
+	}
+	.bbox9{
+		width: 100%;
+		grid-column-start: 1;
+		grid-column-end: 2;
+	}
+	.bbox10{
+		width: 100%;
+		grid-column-start: 1;
+		grid-column-end: 2;
+	}
+	
+	
+
+	
+
+
+
+}

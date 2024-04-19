@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week3 Task3</title>
+    <link rel="icon" href="img/logo.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Top segment: Navbar -->
+    <div class="header">
+        <div class="myweb">
+            <p>My Webpage</p>
+        </div>
+        <div class="web-menu">
+            <div class="item">Item 1</div>
+            <div class="item">Item 2</div>
+            <div class="item">Item 3</div>
+            <div class="item">Item 4</div>
+        </div>
+        <!-- 漢堡圖 -->
+        <div class="mobile-menu">
+            <div id="ham" class="hamburger">
+                <button onclick="pop()"><img src="img/hamburger.png"></button>
+            </div>
+            <div id="pop" class="pop-up">
+                <div class="pop-list">
+                    <div class="list-item">Item 1</div>
+                    <div class="list-item">Item 2</div>
+                    <div class="list-item">Item 3</div>
+                    <div class="list-item">Item 4</div>
+                </div>
+                <div class="exit">
+                    <button onclick="closePop()">X</button>
+                </div>
+            
+            </div>
+            <script>
+                function pop(){
+                    let divHam = document.querySelector("#ham");
+                    let divPop = document.querySelector("#pop");
+                    divHam.style.display="none";
+                    divPop.style.display="block";
+                }
+                function closePop(){
+                    let divHam = document.querySelector("#ham");
+                    let divPop = document.querySelector("#pop");
+                    divHam.style.display="block";
+                    divPop.style.display="none";
+                }
+
+            </script>
+
+        </div>
+    </div>
+
+    <!-- Middle Segment: Welcome text -->
+    <div class="topic">
+        <div class="text">
+            <h2>Welcome to MyHome</h2>
+        </div>
+    </div>
+    
+    <!-- Bottom Segment: Main Content -->
+    <!-- Small Box -->
+    <div id="container_s" class="content_small"></div>
+    <div id="container_b" class="content_big"></div>
+    <script>
+        window.onload = getData();
+        function getData(){
+            fetch("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1").then(function(response){
+                return response.json();
+            }).then(function(data){
+                //console.log(data["data"]["results"])
+                let container_s = document.querySelector("#container_s");
+                for (let i=0; i<13;i++){
+                    //一筆一筆取出data裡的資料
+                    let item = data["data"]["results"][i];
+                    //small box
+                    if (i<3){
+                        var s_box = document.createElement("div");//產生名為s_box的div 用來裝stitle和img
+                        s_box.classList.add('box');
+                        //處理之後RWD會需要stretch的box
+                        if (i===2){
+                            s_box.classList.add('box3');
+                        }
+                        //產生裝title的
+                        let titleElement = document.createElement("p");
+                        titleElement.textContent = item["stitle"] ;
+                        //產生裝img
+                        let imgElement = document.createElement("img");
+                        imgElement.src = getImg(item["filelist"]);
+                        //將子元素（element)裝進s_box 再裝進container_s
+                        s_box.appendChild(imgElement);
+                        s_box.appendChild(titleElement);
+                        container_s.appendChild(s_box);
+                    }
+                    else{
+                        //big box
+                        var b_box = document.createElement("div");//產生名為b_box的div 用來裝stitle和img
+                        b_box.classList.add('bbox');
+                        //處理之後RWD會需要stretch的box
+                        if (i===11){
+                            b_box.classList.add('bbox9');
+                        }
+                        else if(i===12){
+                            b_box.classList.add('bbox10');
+                        }
+                        //產生裝title的
+                        var title = document.createElement("div");
+                        title.classList.add('title');
+                        let titleElement = document.createElement("p");
+                        titleElement.textContent = item["stitle"] ;
+                        title.appendChild(titleElement);
+                        //產生img
+                        let imgElement = document.createElement("img");
+                        imgElement.src = getImg(item["filelist"]);
+                        //產生星星
+                        var star = document.createElement("div");
+                        star.classList.add('star');
+                        let starElement = document.createElement("img")
+                        starElement.src = "img/star.png"
+                        star.appendChild(starElement);
+                        //將子元素（element)裝進s_box 再裝進container_s
+                        b_box.appendChild(imgElement);
+                        b_box.appendChild(title);
+                        b_box.appendChild(star);
+                        container_b.appendChild(b_box); 
+                    
+                    }
+                }
+                
+                
+
+            })
+        }
+        //處理img url
+        function getImg(urls){
+            let spilt_urls = urls.split("http");
+            return "http" + spilt_urls[1]
+        }
+   
+    </script>
+
+
+
+
+</body>
+</html>
