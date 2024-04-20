@@ -158,18 +158,18 @@ button{
 .content_big p{
 	font-size: 20px;
 	font-family: 'Times New Roman', Times, serif;
-	margin-left: auto;
-	margin-right:auto;
+	margin: 0 auto;
+	width: 70%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .bbox{
-	/* 
-	background-size: cover;
-    background-position: center; */
-	/* text-align: center; */
 	display: flex;
     justify-content: center;
     align-items: flex-end;
 	position: relative;
+	overflow: hidden;
 }
 .title{
 	background-color: #CBF4C8;
@@ -180,6 +180,7 @@ button{
     justify-content: center;
 	opacity: 0.7;
 	position:absolute;
+	white-space: nowrap; 
 }
 .star{
 	position: absolute;
@@ -189,6 +190,7 @@ button{
 .bbox img{
 	height: 100%;
 	width: 100%;
+	object-fit: cover;
 }
 
 /* Requirement 2: 600px < screen width <= 1200px */
