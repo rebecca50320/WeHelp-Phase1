@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week4 FastAPI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>歡迎光臨，請輸入帳號密碼</h1>
+    </div>
+    <div class="container">
+        <h2>登入系統</h2>
+    </div>
+    <form id="loginForm" action="/signin" method="post">
+        <div class="container">
+            <p>帳號</p><input type="text" name="username"/>
+        </div>
+        <div class="container">
+            <p>密碼</p><input type="password" name="password"/>
+        </div>
+    </form>
+        <div class="container">
+            <p>同意條款</p><input type="checkbox" id="checkbox"/>
+        </div>
+        <div class="container">
+            <button onclick= checkCheckbox()>登入</button>
+        </div>
+    
+   
+
+    <script>
+        function checkCheckbox(){
+            var checkbox = document.getElementById("checkbox");
+            if (checkbox.checked){
+                document.getElementById("loginForm").submit();
+            }else{
+                alert("Please check the checkbox first")
+            }
+        }
+        
+
+       
+        
+            
+    </script>
+   
+    
+</body>
+</html>
