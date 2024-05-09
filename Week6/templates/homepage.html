@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week6 Member System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>歡迎光臨，請註冊登入系統</h1>
+    </div>
+
+    <!-- 註冊 SignUP -->
+    <div class="container">
+        <h2>註冊帳號</h2>
+    </div>
+    <form id="signupForm" action="/signup" method="post">
+        <div class="container">
+            <p>姓名</p><input type="text" name="name" id="name"/>
+        </div>
+        <div class="container" >
+            <p>帳號</p><input type="text" name="username" id="username"/>
+        </div>
+        <div class="container">
+            <p>密碼</p><input type="password" name="password" id="password"/>
+        </div> 
+    </form>
+        <div class="container">
+            <button onclick= checkEmpty_signUp()>註冊</button>
+        </div>
+    
+    <hr>
+
+    <!-- 登入 SignIN -->
+    <div class="container">
+        <h2>登入系統</h2>
+    </div>
+    <form id="signinForm" action="/signin" method="post">
+        <div class="container">
+            <p>帳號</p><input type="text" name="username" id="username_in"/>
+        </div>
+        <div class="container">
+            <p>密碼</p><input type="password" name="password" id="password_in"/>
+        </div>
+    </form>
+        <div class="container">
+            <button onclick= checkEmpty_signIn()>登入</button>
+        </div>
+    
+   
+
+    <script>
+        function checkEmpty_signUp(){
+            var name = document.getElementById("name").value;
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if (name === "" || username === "" || password === ""){
+                alert("姓名、帳號、密碼不可為空！");
+            }else{
+                document.getElementById("signupForm").submit();
+            }
+        }
+        function checkEmpty_signIn(){
+            var username = document.getElementById("username_in").value;
+            var password = document.getElementById("password_in").value;
+            if (username === "" || password === ""){
+                alert("帳號或密碼不可為空！");
+            }else{
+                document.getElementById("signinForm").submit();
+            }
+        }
+        
+
+       
+        
+            
+    </script>
+   
+    
+</body>
+</html>
