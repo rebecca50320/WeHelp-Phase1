@@ -13,7 +13,7 @@ import json
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="＊＊＊＊＊",
+  password="＊＊＊",
   database= "website"
 )
 cursor = mydb.cursor()
@@ -40,16 +40,17 @@ async def read_home(request: Request):
 ## Sign Up
 @app.post("/signup")
 async def signup(request: Request, name: Optional[str] = Form(None),username: Optional[str] = Form(None), password: Optional[str] = Form(None)):
-    cursor.execute("select username from member")
-    result = cursor.fetchall()
-    if any(username == row[0] for row in result):
+    sql_command = "select count(*) from member where username = %s"
+    cursor.execute(sql_command,(username,))
+    result = cursor.fetchone()
+    if result[0] >0:
       return RedirectResponse(url="/error?message=Repeated Username", status_code=303)
     else:
-      sql_command = "insert into member(name,username,password) values(%s,%s,%s)"
-      val = (name,username,password)
-      cursor.execute(sql_command,val)
-      mydb.commit()
-      return RedirectResponse(url="/",status_code=303 )
+        sql_command = "insert into member(name,username,password) values(%s,%s,%s)"
+        val = (name,username,password)
+        cursor.execute(sql_command,val)
+        mydb.commit()
+        return RedirectResponse(url="/",status_code=303 )
     
 ## Error Page
 @app.get("/error", response_class=HTMLResponse)
@@ -60,19 +61,13 @@ async def read_error(request: Request,message:str=None):
 ## Sign In
 @app.post("/signin")
 async def signin(request: Request, username: Optional[str] = Form(None), password: Optional[str] = Form(None)):
-    cursor.execute("select id, username, password from member")
-    result = list(cursor.fetchall())
-    matches = False
-    index = 0
-    for i in range(len(result)):
-      if result[i][1:] == (username,password):
-          matches = True
-          index = i
-          break
-    if matches == True:
+    sql_command = "select id from member where username = %s and password = %s"
+    cursor.execute(sql_command,(username,password))
+    result = cursor.fetchall()
+    if len(result)>0:
       request.session["SIGNED_IN"] = True
       request.session["USERNAME"] = username
-      request.session["ID"] = result[index][0]
+      request.session["ID"] = result[0][0]
       return RedirectResponse(url="/member",status_code=303)
     else:
       return RedirectResponse(url="/error?message=Username or password is not correct", status_code=303)
@@ -110,4 +105,8 @@ async def signout(request: Request):
     return RedirectResponse(url="/")
 
 
+  
 
+
+
+   
