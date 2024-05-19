@@ -95,36 +95,42 @@ async def read_member(request: Request, message:str=None):
 
 ## query member data by username    
 @app.get("/api/member")
-async def query_member(username:str):
-   sql_command = 'select id,name,username from member where username = %s'
-   cursor.execute(sql_command,(username,))
-   result = cursor.fetchone()
-   
-   if result is None:
-      return {"data":None}
+async def query_member(request:Request,username:str):
+   if request.session.get("SIGNED_IN") == True:
+      sql_command = 'select id,name,username from member where username = %s'
+      cursor.execute(sql_command,(username,))
+      result = cursor.fetchone()
+      
+      if result is None:
+          return {"data":None}
+      else:
+          result_dict = {
+            "id": result[0],
+            "name": result[1],
+            "username": result[2]
+          }
+          return {"data":result_dict}
    else:
-      result_dict = {
-        "id": result[0],
-        "name": result[1],
-        "username": result[2]
-      }
-      return {"data":result_dict}
+      return {"data":None}
    
 ## update member name
 @app.patch("/api/member")
 async def name_update(request:Request, name:NameUpdateRequest):
-  sql_command = 'update member set name = %s where id= %s;'
-  id = request.session.get("ID")
-  cursor.execute(sql_command,(name.name,id))
-  mydb.commit() 
-  sql_command = 'select name from member where id= %s'
-  cursor.execute(sql_command,(id,))
-  result = cursor.fetchone()
-   
-  if result == None:
-    return {"error":True}
-  elif result[0] == name.name:
-    return {"ok":True}
+  if request.session.get("SIGNED_IN") == True:
+    sql_command = 'update member set name = %s where id= %s;'
+    id = request.session.get("ID")
+    cursor.execute(sql_command,(name.name,id))
+    mydb.commit() 
+    sql_command = 'select name from member where id= %s'
+    cursor.execute(sql_command,(id,))
+    result = cursor.fetchone()
+    
+    if result == None:
+      return {"error":True}
+    elif result[0] == name.name:
+      return {"ok":True}
+  else:
+      return {"error":True}
 
 
 ## createMessage
@@ -146,22 +152,3 @@ async def signout(request: Request):
 
 
   
-
-# id = 100
-# name = "test1"
-
-
-# sql_command = 'update member set name = %s where id= %s;'
-# cursor.execute(sql_command,(name,id))
-# mydb.commit()
-# sql_command = 'select name from member where id= %s'
-# cursor.execute(sql_command,(id,))
-# result = cursor.fetchone()
-
-# print(result)
-
-
-# if result == None:
-#    print("fail")
-# elif result[0] == name:
-#    print("ok")

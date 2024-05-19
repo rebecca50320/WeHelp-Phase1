@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week6 Member System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>歡迎光臨，這是會員頁</h1>
+    </div>
+
+    <!-- Member Page -->
+    <div class="container">
+        <h2>{{username}}，歡迎登入系統</h2>
+    </div>
+    <div class="container">
+        <a href="http://127.0.0.1:8000/signout">登出系統</a>
+    </div>
+
+    <hr>
+
+    <!-- Member Query -->
+    <div class="container">
+        <h2>查詢會員姓名</h2>
+    </div>
+    <div class="container">
+        <input type="text" name="username" id="query_username"/><button onclick= queryMember()>查詢</button>
+    </div>
+    <div class="container" id="member_info"></div>
+    <script>
+        function queryMember(){
+            var username = document.getElementById("query_username").value;
+            if (username === ""){
+                alert("您尚未輸入帳號");
+            }else{
+                fetch('/api/member?username='+username).then((response) => {
+                    return response.json();
+                }).then((result) => {
+                    var member_info = document.getElementById("member_info");
+                    if (result.data === null){
+                        member_info.textContent = "無此會員";
+                    }else{
+                        member_info.textContent = `${result.data.name}(${result.data.username})` ;
+                    }
+                });       
+            }
+        }
+    </script>
+
+
+    <hr>
+
+    <!-- Change Name -->
+    <div class="container">
+        <h2>更新我的姓名</h2>
+    </div>
+    <div class="container">
+        <input type="text" name="name" id="new_name"/><button onclick= updateName()>更新</button>
+    </div>
+    <div class="container" id="update_result"></div>
+    
+    <script>
+        function updateName(){
+            var newname = document.getElementById("new_name").value;
+            if (newname === ""){
+                alert("您尚未輸入新的姓名");
+            }else{
+                fetch("/api/member",{
+                    method:"PATCH",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({name:newname})
+                }).then((response) => {
+                    return response.json();
+                }).then((result) => {
+                    var update_result = document.getElementById("update_result");
+                    console.log(result.error);
+                    if (result.error === true){
+                        update_result.textContent = "更新失敗";
+                    }else{
+                        update_result.textContent = "更新成功" ;
+                    }
+                })
+            
+            }
+        }
+    </script>
+
+    <hr>
+
+    <!-- Create Message -->
+    <div class="container">
+        <h2>快來留言吧</h2>
+    </div>
+    <form id="messageForm" action="/createMessage" method="post">
+        <div class="container">
+            <p>內容</p><input type="text" name="message" id="new_message"/>
+        </div>
+    </form>
+    <div class="container">
+        <button onclick= checkEmpty()>送出</button>
+    </div>
+    <script>
+        function checkEmpty(){
+            var message = document.getElementById("new_message").value;
+            if (message === ""){
+                alert("您尚未輸入訊息");
+            }else{
+                document.getElementById("messageForm").submit();
+            }
+        }
+    </script>
+
+    <hr>
+
+    <!-- Previous Messages -->
+
+    <script>
+        window.onload = getData();
+        function getData(){
+            var data = {{ formatted_data | tojson | safe }}
+            //var data = [{"id": 1, "content": "\u9ec3\u6cb3\u5165\u6d77\u6d41", "username": "test"}, {"id": 11, "content": "\u767d\u65e5\u4f9d\u5c71\u76e1", "username": "anna"}, {"id": 11, "content": "\u767d\u65e5\u4f9d\u5c71\u76e1", "username": "anna"}, {"id": 1, "content": "test test test", "username": "test"}, {"id": 1, "content": "one two three", "username": "test"}, {"id": 3, "content": "hello world", "username": "alice456"}, {"id": 1, "content": "four five six", "username": "test"}, {"id": 5, "content": "hi", "username": "emily012"}, {"id": 5, "content": "bye", "username": "emily012"}]
+            for (let i=0; i<data.length;i++){
+                var username = data[i].username;
+                var content = data[i].content;
+                //console.log(username,content);
+                // 創建container
+                var container = document.createElement("div");
+                container.classList.add("container");
+                // 創建<p> 和<strong>
+                var paragraph = document.createElement("p");
+                var strong = document.createElement("strong");
+                //var button = document.createElement("button")
+                strong.textContent = username;
+                var textNode = document.createTextNode(" : " + content);
+                //var buttonText = document.createTextNode("x");
+                //button.appendChild(buttonText); // 将文本节点添加到按钮元素中
+                paragraph.appendChild(strong);
+                paragraph.appendChild(textNode);
+
+                container.appendChild(paragraph);
+                //container.appendChild(button);
+
+                document.body.appendChild(container);
+            }
+        }
+
+    </script>
+
+    
+    
+
+    
+</body>
+</html>
